@@ -23,7 +23,7 @@ namespace NoWeiSuperStore
         {
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(
-            Configuration["Data:SportStoreProducts:ConnectionString"]));
+            Configuration["Data:NoWeiSuperStorePRoducts:ConnectionString"]));
             services.AddTransient<IProductRepository, EFProductRepository>();
             services.AddMvc();
         }
