@@ -11,7 +11,7 @@ namespace NoWeiSuperStore.Controllers
     public class ProductController : Controller
     {
         private IProductRepository repository;
-        public int PageSize = 4;
+        public int PageSize = 7;
         public ProductController(IProductRepository repo)
         {
             repository = repo;
@@ -35,8 +35,11 @@ namespace NoWeiSuperStore.Controllers
         {
             CurrentPage = productPage,
             ItemsPerPage = PageSize,
-            TotalItems = repository.Products.Count()
-        },
+                TotalItems = category == null ?
+                repository.Products.Count() :
+                repository.Products.Where(e =>
+                e.Category == category).Count()
+            },
             CurrentCategory = category
         });
 
