@@ -11,10 +11,6 @@ namespace NoWeiSuperStore.Controllers
 {
     public class OrderController : Controller
     {
-        // GET: /<controller>/
-        public IActionResult Index()
-        {
-            public ViewResult Checkout() => View(new Order());
-        }
+        public ViewResult Checkout() => View(new Order());
     }
 }

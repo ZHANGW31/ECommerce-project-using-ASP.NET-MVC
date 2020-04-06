@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using NoWeiSuperStore.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
 
 
