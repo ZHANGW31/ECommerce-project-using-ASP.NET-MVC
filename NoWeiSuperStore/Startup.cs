@@ -25,17 +25,20 @@ namespace NoWeiSuperStore
             services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(
-            Configuration["Data:NoWeiSuperStorePRoducts:ConnectionString2"]));
+            Configuration["Data:NoWeiSuperStoreProducts:ConnectionString2"]));
             services.AddTransient<IProductRepository, EFProductRepository>();
             services.AddMvc();
-            
-            
+            services.AddMemoryCache();
+            services.AddSession();
+
+
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            app.UseSession();
             app.UseMvc(routes => {
                 routes.MapRoute(
                     name: null,
