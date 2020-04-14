@@ -6,8 +6,6 @@ using Moq;
 using NoWeiSuperStore.Infrastructure;
 using NoWeiSuperStore.Models.ViewModels;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-
-
 using Xunit;
 
 namespace NoWeiSuperStore.Test
