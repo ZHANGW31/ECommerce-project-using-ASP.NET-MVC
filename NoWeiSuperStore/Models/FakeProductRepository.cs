@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace NoWeiSuperStore.Models
 {
-    public class FakeProductRepository : IProductRepository
+    public class FakeProductRepository /*: IProductRepository*/
     {
         public IQueryable<Product> Products => new List<Product> {
         new Product { Name = "Wei's Signature Weaponized Football", Price = 25 },
