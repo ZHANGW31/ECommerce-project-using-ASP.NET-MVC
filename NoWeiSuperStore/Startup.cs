@@ -33,7 +33,7 @@ namespace NoWeiSuperStore
 
             services.AddDbContext<AppIdentityDbContext>(options =>
             options.UseSqlServer(
-            Configuration["Data:SportStoreIdentity:ConnectionString"]));
+            Configuration["Data:NoWeiSuperStoreIdentity:ConnectionString"]));
             services.AddIdentity<IdentityUser, IdentityRole>()
             .AddEntityFrameworkStores<AppIdentityDbContext>()
             .AddDefaultTokenProviders();
