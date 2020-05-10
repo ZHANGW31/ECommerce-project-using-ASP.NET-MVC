@@ -11,8 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.AspNetCore.Identity;
-
-
+using Microsoft.Extensions.Hosting;
 
 namespace NoWeiSuperStore
 {
@@ -29,7 +28,7 @@ namespace NoWeiSuperStore
             services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(
-            Configuration["Data:NoWeiSuperStoreProducts:ConnectionString2"]));
+            Configuration["Data:NoWeiSuperStoreProducts:ConnectionString"]));
 
             services.AddDbContext<AppIdentityDbContext>(options =>
             options.UseSqlServer(
@@ -50,6 +49,15 @@ namespace NoWeiSuperStore
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseStatusCodePages();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+            }
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
@@ -91,8 +99,8 @@ namespace NoWeiSuperStore
                     });
                 routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
             });
-            SeedData.EnsurePopulated(app);
-            IdentitySeedData.EnsurePopulated(app);
+            //SeedData.EnsurePopulated(app);
+            //IdentitySeedData.EnsurePopulated(app);
         }
     }
 }

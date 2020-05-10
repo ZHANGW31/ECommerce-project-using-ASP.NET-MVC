@@ -6,14 +6,15 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace NoWeiSuperStore.Models
 {
     public static class SeedData
     {
-        public static void EnsurePopulated(IApplicationBuilder app)
+        public static void EnsurePopulated(IServiceProvider services)
         {
-            ApplicationDbContext context = app.ApplicationServices
-            .GetRequiredService<ApplicationDbContext>();
+            ApplicationDbContext context =
+            services.GetRequiredService<ApplicationDbContext>();
             //context.Database.Migrate();
             if (!context.Products.Any())
             {

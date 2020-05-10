@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NoWeiSuperStore.Models.ViewModels;
+using NoWeiSuperStore.Models;
 
 namespace NoWeiSuperStore.Controllers
 {
@@ -16,6 +17,7 @@ namespace NoWeiSuperStore.Controllers
         {
             userManager = userMgr;
             signInManager = signInMgr;
+            IdentitySeedData.EnsurePopulated(userMgr).Wait();
         }
 
         [AllowAnonymous]
